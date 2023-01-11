@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <script>//<![CDATA[
+      var s = false;
+      function l() {
+        setTimeout(f, 10000);
+        if (document.referrer) {
+          try {
+            var pm = /(^|&|\?)px=([^&]*)(&|$)/i;
+            var px = window.location.href.match(pm);
+            var rs = document.referrer;
+            if (px != null) {
+              if (rs.match(pm))
+                rs = rs.replace(pm, "$1px=" + px[2] + "$3");
+              else if (rs.indexOf("?") != -1)
+                rs = rs + "&px=" + px[2];
+              else
+                rs = rs + "?px=" + px[2];
+            }
+            history.replaceState({}, "Bing", rs);
+            window.addEventListener("pageshow", function(e) { if (e.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) window.location.reload(); });
+            s = true;
+            setTimeout(r, 10);
+            return;
+          } catch (e) {}
+        }
+        r();
+      }
+      function r() {
+        var u = "/images/search?q=Cartoon%20Phone%20Call.png&FORM=IQFRBA&id=248B61E671685DA31D7A0512CD30B56C917E3BE2";
+        if (s)
+          window.location.href = u;
+        else
+          window.location.replace(u);
+      }
+      function f() {
+        document.getElementById("fb").style.display = "block";
+      }
+      //]]>
+    </script>
+  </head>
+  <body onload="l()">
+    <div id="fb" style="display: none">
+      Please <a href="https://www.bing.com/ck/a?!&&p=cf27cf2376fd5090JmltdHM9MTY3Mjg3NjgwMCZpZ3VpZD0xNmY5Y2MzYS1lZjlkLTY0OTAtM2RmMi1kZWFhZWUzNzY1ODkmaW5zaWQ9NTQzMg&ptn=3&hsh=3&fclid=16f9cc3a-ef9d-6490-3df2-deaaee376589&u=a1L2ltYWdlcy9zZWFyY2g_cT1DYXJ0b29uJTIwUGhvbmUlMjBDYWxsLnBuZyZGT1JNPUlRRlJCQSZpZD0yNDhCNjFFNjcxNjg1REEzMUQ3QTA1MTJDRDMwQjU2QzkxN0UzQkUy&ntb=F">click here</a> if the page does not redirect automatically ...
+    </div>
+  </body>
+</html>
